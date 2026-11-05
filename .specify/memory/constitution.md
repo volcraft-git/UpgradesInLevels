@@ -1,9 +1,8 @@
 <!--
 Sync Impact Report
-- Version: 1.0.0 → 1.1.0
-- Principe ajouté : IV. Gestion explicite des erreurs
-- Section modifiée : Contraintes de code (règle sur les erreurs déplacée dans le principe IV)
-- Sections retirées : aucune
+- Version: 1.1.0 → 1.2.0
+- Section modifiée : Contraintes de code (ajout des sources de documentation Thunderstore)
+- Sections ajoutées / retirées : aucune
 - TODO : aucun
 -->
 # mod-repo-upgrade-spawn-level Constitution
@@ -46,6 +45,12 @@ Justification : une erreur cachée rend les bugs introuvables, pour un humain co
 
 ## Contraintes de code
 
+- Tout ce qui touche à Thunderstore (format du paquet, `manifest.json`, icône, README,
+  dépendances, publication) DOIT suivre la documentation officielle :
+  - Wiki : https://wiki.thunderstore.io/
+  - API : https://thunderstore.io/api/docs/
+  En cas de doute, consulter ces sources plutôt que de supposer.
+
 - Les entrées externes (fichiers, configuration, données de mod) DOIVENT être validées.
 
 ## Workflow de développement
@@ -61,4 +66,4 @@ Cette constitution prime sur toute autre pratique du projet. Toute modification 
 PATCH : reformulation). Les plans (`/speckit-plan`) DOIVENT vérifier leur conformité
 avec ces principes.
 
-**Version**: 1.1.0 | **Ratified**: 2026-11-05 | **Last Amended**: 2026-11-05
+**Version**: 1.2.0 | **Ratified**: 2026-11-05 | **Last Amended**: 2026-11-05
