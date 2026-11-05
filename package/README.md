@@ -2,6 +2,8 @@
 
 Upgrades can now be found while exploring levels.
 
+![Upgrade found in a level](https://raw.githubusercontent.com/volcraft-git/UpgradesInLevels/master/assets/repo-mod-upgrade.gif)
+
 After the game places its valuables, every **empty** valuable spot has a small chance to receive a
 random upgrade. Valuables are never removed: upgrades are added on top.
 
