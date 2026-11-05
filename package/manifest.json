@@ -1,0 +1,7 @@
+{
+  "name": "UpgradesInLevels",
+  "version_number": "1.0.0",
+  "website_url": "",
+  "description": "Upgrades can rarely spawn on empty valuable spots in levels. Cheaper upgrades are more common. Chance is configurable. Host-only.",
+  "dependencies": ["BepInEx-BepInExPack-5.4.2305"]
+}

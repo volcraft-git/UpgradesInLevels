@@ -42,8 +42,8 @@ https://thunderstore.io/api/docs/ demande une connexion : non lue, aucune info A
   `Object.Instantiate(item.prefab.Prefab, pos, rot)`.
 - **Rationale**: objets du jeu de base, chargés depuis ses ressources : Photon les réplique chez
   tous les joueurs. **Le mod n'est requis que chez l'hôte** (point différé de la spec résolu).
-- **Risque**: le type exact de `Item.prefab` (supposé `PrefabRef`, comme pour les valuables) est
-  confirmé à la compilation.
+- **Confirmé à la compilation**: `Item.prefab` expose `ResourcePath` et `Prefab` (comme pour les
+  valuables) ; `Item.spawnRotationOffset` est un `Quaternion` (rotation = volume × offset).
 
 ## 5. Liste des améliorations et poids
 

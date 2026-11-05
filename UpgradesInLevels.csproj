@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>UpgradesInLevels</AssemblyName>
+    <RootNamespace>UpgradesInLevels</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Version>1.0.0</Version>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <GameDir Condition="'$(GameDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\REPO</GameDir>
+    <ProfileDir Condition="'$(ProfileDir)' == ''">$(APPDATA)\Thunderstore Mod Manager\DataFolder\REPO\profiles\Default</ProfileDir>
+    <ManagedDir>$(GameDir)\REPO_Data\Managed</ManagedDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="src/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp" HintPath="$(ManagedDir)\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="UnityEngine" HintPath="$(ManagedDir)\UnityEngine.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(ManagedDir)\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="PhotonUnityNetworking" HintPath="$(ManagedDir)\PhotonUnityNetworking.dll" Private="false" />
+    <Reference Include="PhotonRealtime" HintPath="$(ManagedDir)\PhotonRealtime.dll" Private="false" />
+    <Reference Include="BepInEx" HintPath="$(ProfileDir)\BepInEx\core\BepInEx.dll" Private="false" />
+    <Reference Include="0Harmony" HintPath="$(ProfileDir)\BepInEx\core\0Harmony.dll" Private="false" />
+  </ItemGroup>
+
+  <!-- Copie la DLL dans le profil du gestionnaire de mods pour tester en jeu. -->
+  <Target Name="CopyToProfile" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ProfileDir)\BepInEx\plugins\UpgradesInLevels" />
+  </Target>
+
+  <!-- dotnet build -c Release -t:Package  ->  dist/UpgradesInLevels-<version>.zip -->
+  <Target Name="Package" DependsOnTargets="Build">
+    <RemoveDir Directories="$(IntermediateOutputPath)package" />
+    <ItemGroup>
+      <PackageFiles Include="package\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(PackageFiles);$(TargetPath)" DestinationFolder="$(IntermediateOutputPath)package" />
+    <MakeDir Directories="dist" />
+    <ZipDirectory SourceDirectory="$(IntermediateOutputPath)package" DestinationFile="dist\UpgradesInLevels-$(Version).zip" Overwrite="true" />
+  </Target>
+
+</Project>
